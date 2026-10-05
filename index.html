@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Larp Addon - The best free basefinding addon</title>
+    <style>
+        :root {
+            --bg-color: #050505;
+            --card-bg: #0d0d0d;
+            --text-main: #ffffff;
+            --text-muted: #888888;
+            --accent-blue: #0044ff;
+            --accent-hover: #0033cc;
+            --border-color: #1a1a1a;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            padding-bottom: 60px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            border-bottom: 1px solid var(--border-color);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .brand img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--text-main);
+        }
+
+        .hero {
+            max-width: 800px;
+            margin: 60px auto;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero-gif {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 20px 0;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-val {
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .stat-lbl {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            margin-top: 4px;
+        }
+
+        .cta-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: center;
+            margin-bottom: 80px;
+        }
+
+        .btn {
+            display: inline-block;
+            width: 220px;
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: background 0.2s ease, border-color 0.2s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-blue);
+            color: var(--text-main);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--text-muted);
+        }
+
+        .author-tag {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .features-section {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .feature-row {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            padding: 40px 0;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .feature-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .feature-desc {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        footer {
+            max-width: 1000px;
+            margin: 60px auto 0 auto;
+            padding: 40px 40px 0 40px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        footer p {
+            margin-bottom: 12px;
+        }
+
+        footer a {
+            color: var(--text-muted);
+            text-decoration: underline;
+        }
+
+        footer a:hover {
+            color: var(--text-main);
+        }
+
+        .copyright {
+            margin-top: 24px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+                padding: 20px;
+            }
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            .feature-row {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="https://raw.githubusercontent.com/ahans190/Larp-addon.-Not-src-/refs/heads/main/1-21-11-larp-addon-icon-4096.gif" class="brand">
+            <img src="https://raw.githubusercontent.com/ahans190/Larp-addon.-Not-src-/refs/heads/main/1-21-11-larp-addon-icon-4096.gif" alt="Larp Addon Logo">
+            Larp Addon
+        </a>
+        <nav>
+            <a href="#" class="active">Home</a>
+            <a href="#">Modules</a>
+            <a href="https://github.com/ahans190/larpaddon/releases/download/V9/larp-v9.jar">Download</a>
+            <a href="#">Archive</a>
+            <a href="#">Configs & Texture Packs</a>
+            <a href="#">Cracks</a>
+            <a href="#">Other Mods</a>
+            <a href="#">Scanner</a>
+            <a href="#">Suggest</a>
+            <a href="#">Misc</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <img src="https://raw.githubusercontent.com/ahans190/Larp-addon.-Not-src-/refs/heads/main/1-21-11-larp-addon-icon-4096.gif" alt="Larp Addon Feature" class="hero-gif">
+            <h1>The best free (basefinding)<br>addon</h1>
+            <p>A Meteor addon built for finding bases on DonutSMP: chunk finders and bypasses that spot player-touched chunks, ESPs for what's inside them, and the quality-of-life stuff around the hunt.</p>
+            
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-val">v9</div>
+                    <div class="stat-lbl">Most recent build</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-val">35</div>
+                    <div class="stat-lbl">Modules</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-val">DonutSMP</div>
+                    <div class="stat-lbl">Target server</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-val">Meteor</div>
+                    <div class="stat-lbl">Bundled in</div>
+                </div>
+            </div>
+
+            <div class="cta-group">
+                <a href="https://github.com/ahans190/larpaddon/releases/download/V9/larp-v9.jar" class="btn btn-primary">Get Larp Addon</a>
+                <a href="https://github.com/ahans190/larpaddon/releases/download/V9/larp-v9.jar" class="btn btn-secondary">Archived Downloads</a>
+                <span class="author-tag">By sub5larp</span>
+            </div>
+        </section>
+
+        <section class="features-section">
+            <div class="feature-row">
+                <div class="feature-title">Basefinding</div>
+                <div class="feature-desc">11 modules for spotting chunks players have touched on DonutSMP: four generations of chunkfinder, sus chunk and amethyst chunk finder, amethyst and anti-ESP bypasses, player bypass v3 that fingerprints chunks and re-checks whether they keep ticking, plus light and mei mei debug.</div>
+            </div>
+            
+            <div class="feature-row">
+                <div class="feature-title">Misc</div>
+                <div class="feature-desc">24 modules around the hunt: better block ESP, geode ESP checked against the seed, hole and rotated deepslate ESP, netherite bypass v3 for ancient debris, auto mine, auto trident, legit auto tool, elytra helper, freecam, protect, fake roles, stats changer, and the home, rtp, relog and pearl methods.</div>
+            </div>
+
+            <div class="feature-row">
+                <div class="feature-title">HUD</div>
+                <div class="feature-desc">Three HUD elements: a rain bucket that shows the weather where you stand, a DonutSMP region map with your spot on it, and a staff list.</div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Larp Addon — by sub5larp<br><span style="color: #555;">(thanks to extrasillybilly for parts of this website and thanks claude &lt;3)</span></p>
+        <p>Larp Addon is a third party Minecraft mod. It isn't affiliated with, endorsed by or connected to Mojang Studios or Microsoft. Using it on multiplayer servers can break their rules. Any bans or punishments that follow are on you, not on the people who made it.</p>
+        <p><a href="#">Legal Policy</a></p>
+        <div class="copyright">
+            © 2026 larp addon. Not affiliated with Mojang or Microsoft.<br>
+            <span style="color: #661111;">This is the only official Larp Addon site, downloads from any other site are very likely to be malware.</span>
+        </div>
+    </footer>
+
+</body>
+</html>
